@@ -1,0 +1,197 @@
+@color-background: rgb(241, 248, 253);
+@color-accent: white;
+@color-text: #0e0e0e;
+@color-selected: rgb(97, 171, 216);
+@color-shadow: #c8d1d5;
+
+@font-face {
+    font-family: temperature;
+    src: url(../public/unispace\ bd.ttf);
+}
+
+html,
+html::before,
+html::after {
+    box-sizing: border-box;
+}
+
+html * {
+    box-sizing: inherit;
+}
+
+.App {
+    background-color: @color-background;
+    color: @color-text;
+    font-size: calc(12px + 2vmin);
+    font-weight: 200;
+    text-align: center;
+    min-height: 100vh;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.App-header {
+    min-height: fit-content;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-transform: uppercase;
+}
+
+.city-nav {
+    display: flex;
+    justify-content: center;
+    width: 40vw;
+    height: 12vh;
+}
+
+.city-nav-list {
+    margin: 1.5em 0;
+    padding: 0;
+
+    list-style-type: none;
+
+    font-size: calc(16px + 2vmin);
+
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.city-nav-item {
+    
+
+    &.active {
+        color: @color-selected;
+
+        font-weight: 700;
+    }
+}
+
+.App-content {
+
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+    .weather-panel {
+        background-color: @color-accent;
+        position: relative;
+
+        display: flex;
+
+        width: 50%;
+        height: min(60vh, 800px);
+        left: 50% - 50vh;
+        right: 50% - 50vh;
+
+        border: 3px solid @color-accent;
+        border-radius: 16px;
+
+        box-shadow:0px 10px 40px @color-shadow;
+    }
+}
+
+.weather-panel-content {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.current-weather-section {
+    flex: 4;
+    display: flex;
+}
+
+.upcoming-weather-section {
+    flex: 3;
+    display: flex;
+    
+
+    .weather-card:first-child {
+        border-bottom-left-radius: 16px;
+    }
+
+    .weather-card:last-child {
+        border-bottom-right-radius: 16px;
+    }
+}
+
+.weather-card {
+    flex: 1;
+    background-color: @color-background;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    margin: 3px;
+
+    .fa-solid {
+        font-size: calc(16px + 4vmin);
+    }
+
+    .card-content-info-temp {
+        font-family: temperature, sans-serif;
+    }
+
+    .card-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        
+        margin-top: 16px;
+    }
+
+    .card-content-info {
+        margin-top: 16px;
+    }
+
+    &.large {
+        font-size: calc(12px + 3vmin);
+
+        border-top-left-radius: 16px;
+        border-top-right-radius: 16px;
+
+        .card-content {
+            flex-direction: row;
+            margin-top: 32px;
+        }
+        .card-content-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+
+            margin-left: 24px;
+            margin-top: 0;
+        }
+
+        .card-content-info-temp {
+            font-size: calc(26px + 4vmin);
+        }
+
+        .fa-solid {
+            font-size: calc(40px + 10vmin);
+        }
+    }
+}
+
+.card-content-info-temp {
+    font-weight: 700;
+}
+  
+.App-footer {
+    
+}
+  
