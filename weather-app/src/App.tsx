@@ -1,11 +1,10 @@
 import React from 'react';
-import CityNav from './CityNav';
-import WeatherPanel from './WeatherPanel';
+import CityNav from './components/CityNav';
+import WeatherPanel from './components/WeatherPanel';
 import './App.css';
-import {WeatherData, WeatherListItem} from './weatherData';
+import {WeatherData, WeatherListItem} from './components/weatherData';
 
 type Props = {
-
 };
 
 type State = {
@@ -35,7 +34,7 @@ class App extends React.Component<Props, State>{
 
   getWeatherData(cityId : number) {
     return new Promise((resolve, reject) => {
-      let url = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&appid=NULL`
+      let url = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&appid=b5c84ba8bf555b0f0a52982f8f64caad`
   
       const xhr = new XMLHttpRequest();
       xhr.open('GET',url);

@@ -5,7 +5,6 @@ type Props = {
 };
 
 type State = {
-
 };
 
 class WeatherIcon extends React.Component<Props, State> {

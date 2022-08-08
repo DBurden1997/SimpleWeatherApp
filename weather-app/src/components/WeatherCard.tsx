@@ -11,7 +11,6 @@ type Props = {
 };
 
 type State = {
-
 };
 
 class WeatherCard extends React.Component<Props, State> {

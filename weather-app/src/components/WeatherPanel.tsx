@@ -8,7 +8,6 @@ type Props = {
 };
 
 type State = {
-
 };
 
 class WeatherPanel extends React.Component<Props, State> {
