@@ -1,22 +1,33 @@
 import React from "react";
 
-function CityNav() {
+type Props = {
+    cityList: Array<string>;
+    activeCity: string;
+    onCityClick : Function;
+};
 
-    return (
-        <nav className="city-nav">
-            <ul className="city-nav-list">
-                <li>
-                    <div className="city-nav-item active">St. John's</div>
-                </li>
-                <li>
-                    <div className="city-nav-item">Tokyo</div>
-                </li>
-                <li>
-                    <div className="city-nav-item">Madrid</div>
-                </li>
-            </ul>
-        </nav>
-    )
+type State = {
+};
+
+class CityNav extends React.Component<Props, State> {
+    render() {
+        let listItems = this.props.cityList.map((cityName, i) => 
+            <li key={i}>
+                <div className={`city-nav-item ${this.props.activeCity === cityName ? "active" : ""}`} 
+                    onClick={() => {this.props.onCityClick(cityName)}}>
+                    {cityName}
+                </div>
+            </li>
+        );
+
+        return (
+            <nav className="city-nav">
+                <ul className="city-nav-list">
+                    {listItems}
+                </ul>
+            </nav>
+        )
+    }
 }
 
 export default CityNav;

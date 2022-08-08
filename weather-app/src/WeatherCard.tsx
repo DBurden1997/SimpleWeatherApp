@@ -1,25 +1,37 @@
 import React from "react";
 
-interface WeatherCardProps{
+type Props = {
+    day : string;
     isLarge : boolean;
     temp : number;
     weather : string;
-}
+    placeholder : boolean;
+};
 
-function WeatherCard(props : WeatherCardProps) {
+type State = {
 
-    return (
-        <div className={`weather-card ${props.isLarge ? "large" : ""}`}>
-            <div className="card-title">Today</div>
-            <div className="card-content">
-                <i className="fa-solid fa-cloud"></i>
-                <div className="card-content-info">
-                    <div className="card-content-info-temp">{`${props.temp}°`}</div>
-                    {props.isLarge ? <div className="card-content-info-weather">{props.weather}</div> : ""}
+};
+
+class WeatherCard extends React.Component<Props, State> {
+    constructor(props : Props) {
+        super(props);
+        this.state = {};
+    }
+
+    render() {
+        return (
+            <div className={`weather-card ${this.props.isLarge ? "large" : ""}`}>
+                <div className="card-title">{this.props.placeholder ? "Loading..." : this.props.day}</div>
+                <div className="card-content">
+                    <i className="fa-solid fa-cloud"></i>
+                    <div className="card-content-info">
+                        <div className="card-content-info-temp">{this.props.placeholder ? "-°" : `${this.props.temp}°`}</div>
+                        {this.props.isLarge ? <div className="card-content-info-weather">{this.props.weather}</div> : ""}
+                    </div>
                 </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default WeatherCard;

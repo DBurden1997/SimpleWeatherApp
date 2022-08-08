@@ -48,6 +48,10 @@ html * {
   color: #61abd8;
   font-weight: 700;
 }
+.city-nav-item:hover {
+  cursor: pointer;
+  color: #61abd8;
+}
 .App-content {
   flex: 1;
   display: flex;
