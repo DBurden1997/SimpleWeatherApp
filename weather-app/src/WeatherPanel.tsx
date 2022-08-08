@@ -20,11 +20,11 @@ class WeatherPanel extends React.Component<Props, State> {
     render() {
         if(this.props.loaded && this.props.weatherData) {
             let todayData = this.props.weatherData[0];
-            let todayCard = <WeatherCard day={"Today"} isLarge={true} temp={Math.round(todayData.temp)} weather={todayData.weatherDesc} placeholder={false}></WeatherCard>
+            let todayCard = <WeatherCard day={"Today"} isLarge={true} temp={Math.round(todayData.temp)} weather={todayData.weatherDesc} icon={todayData.weatherIcon} placeholder={false}></WeatherCard>
 
             let upcomingData = this.props.weatherData.slice(1);
             let upcomingCards = upcomingData.map((dayData, i) => 
-                <WeatherCard key={i} day={dayData.day} isLarge={false} temp={Math.round(dayData.temp)} weather={dayData.weatherDesc} placeholder={false}></WeatherCard>
+                <WeatherCard key={i} day={dayData.day} isLarge={false} temp={Math.round(dayData.temp)} weather={dayData.weatherDesc} icon={dayData.weatherIcon} placeholder={false}></WeatherCard>
             )
 
             return (
@@ -45,13 +45,13 @@ class WeatherPanel extends React.Component<Props, State> {
             <div className="weather-panel">
                 <div className="weather-panel-content">
                     <div className="current-weather-section">
-                        <WeatherCard day={''} isLarge={true} temp={0} weather={"Loading"} placeholder={true}></WeatherCard>
+                        <WeatherCard day={''} isLarge={true} temp={0} weather={"Loading"} icon={""} placeholder={true}></WeatherCard>
                     </div>
                     <div className="upcoming-weather-section">
-                        <WeatherCard day={''} isLarge={false} temp={14} weather={"Clouds"} placeholder={true}></WeatherCard>
-                        <WeatherCard day={''} isLarge={false} temp={18} weather={"Rain"} placeholder={true}></WeatherCard>
-                        <WeatherCard day={''} isLarge={false} temp={21} weather={"Scattered Cloud"} placeholder={true}></WeatherCard>
-                        <WeatherCard day={''} isLarge={false} temp={26} weather={"Snow"} placeholder={true}></WeatherCard>
+                        <WeatherCard day={''} isLarge={false} temp={14} weather={"Clouds"} icon={""} placeholder={true}></WeatherCard>
+                        <WeatherCard day={''} isLarge={false} temp={18} weather={"Rain"} icon={""} placeholder={true}></WeatherCard>
+                        <WeatherCard day={''} isLarge={false} temp={21} weather={"Scattered Cloud"} icon={""} placeholder={true}></WeatherCard>
+                        <WeatherCard day={''} isLarge={false} temp={26} weather={"Snow"} icon={""} placeholder={true}></WeatherCard>
                     </div>
                 </div>
             </div>
