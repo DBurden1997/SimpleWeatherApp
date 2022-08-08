@@ -34,7 +34,7 @@ class App extends React.Component<Props, State>{
 
   getWeatherData(cityId : number) {
     return new Promise((resolve, reject) => {
-      let url = `http://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&appid=b5c84ba8bf555b0f0a52982f8f64caad`
+      let url = `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&appid=b5c84ba8bf555b0f0a52982f8f64caad`
   
       const xhr = new XMLHttpRequest();
       xhr.open('GET',url);
