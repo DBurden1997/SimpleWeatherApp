@@ -46,6 +46,7 @@ html * {
     display: flex;
     justify-content: center;
     width: 40vw;
+    min-width: 320px;
     height: 12vh;
 }
 
@@ -55,7 +56,7 @@ html * {
 
     list-style-type: none;
 
-    font-size: calc(16px + 2vmin);
+    font-size: calc(16px + 1vw);
 
     width: 100%;
 
@@ -95,7 +96,9 @@ html * {
         display: flex;
 
         width: 50%;
-        height: min(60vh, 800px);
+        min-width: 300px;
+        height: min(70vh, 800px);
+        min-height: 460px;
         left: 50% - 50vh;
         right: 50% - 50vh;
 
@@ -173,6 +176,7 @@ html * {
         .card-content {
             flex-direction: row;
             margin-top: 32px;
+            margin-bottom: 24px;
         }
         .card-content-info {
             display: flex;
@@ -196,8 +200,33 @@ html * {
 .card-content-info-temp {
     font-weight: 700;
 }
-  
-.App-footer {
-    
+ 
+@media only screen and (max-width: 1100px) {
+    .current-weather-section {
+        flex: 0;
+    }
+
+    .upcoming-weather-section {
+        flex-direction: column;
+        
+        .weather-card {
+            flex-direction: row;
+
+            padding: 6px
+        }
+
+        .card-content {
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-items: center;
+
+            margin: 0;
+        }
+
+        .card-content-info {
+
+            margin: 0 32px;
+        }
+    }
 }
   
