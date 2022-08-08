@@ -18,7 +18,7 @@ type State = {
 class App extends React.Component<Props, State>{
   constructor(props : Props) {
     super(props);
-
+    
     this.state = {
       cityList: ["St. John's", "Tokyo", "Madrid"],
       cityWeatherIds: new Map<string, number>([
@@ -31,11 +31,11 @@ class App extends React.Component<Props, State>{
       loaded: false,
     };
   }
-
+  
   getWeatherData(cityId : number) {
     return new Promise((resolve, reject) => {
       let url = `https://api.openweathermap.org/data/2.5/forecast?id=${cityId}&units=metric&appid=b5c84ba8bf555b0f0a52982f8f64caad`
-  
+      
       const xhr = new XMLHttpRequest();
       xhr.open('GET',url);
       xhr.onload = () => {
@@ -52,12 +52,12 @@ class App extends React.Component<Props, State>{
   
   parseWeatherData(data : any) {
     const parsedData = JSON.parse(data);
-
+    
     let weatherList : Array<WeatherListItem> = parsedData.list;
     let daily : Array<WeatherListItem> = weatherList.filter((listItem, index) => {
       return index % 8 === 0;
     });
-
+    
     let weatherData : Array<WeatherData> = daily.map((dayData) : WeatherData => {
       let mappedData : WeatherData = {
         day: new Date(dayData.dt * 1000).toLocaleString('en-US', {weekday: 'long'}),
@@ -65,19 +65,19 @@ class App extends React.Component<Props, State>{
         weatherDesc: dayData.weather[0].main,
         weatherIcon: dayData.weather[0].icon,
       };
-
+      
       return mappedData;
     });
-  
+    
     return weatherData;
   }
-
+  
   changeCity(activeCity : string) {
-      this.setState((state) => ({
-          activeCity
-      }));
+    this.setState((state) => ({
+      activeCity
+    }));
   }
-
+  
   componentDidMount() {
     if(!this.state.loaded){
       let stJohnsId = this.state.cityWeatherIds.get("St. John's");
@@ -87,7 +87,7 @@ class App extends React.Component<Props, State>{
         let stJohnsPromise = this.getWeatherData(stJohnsId).then(this.parseWeatherData, (error)=>console.log(error));
         let tokyoPromise = this.getWeatherData(tokyoId).then(this.parseWeatherData, (error)=>console.log(error));
         let madridPromise = this.getWeatherData(madridId).then(this.parseWeatherData, (error)=>console.log(error));
-  
+        
         Promise.all([stJohnsPromise, tokyoPromise, madridPromise]).then((weatherData) => {
           let cityWeatherData = new Map<string, Array<WeatherData>>();
           if(weatherData[0]) {
@@ -104,10 +104,10 @@ class App extends React.Component<Props, State>{
       }
     }
   }
-
+  
   render() {
     let activeData = this.state.cityWeatherData.get(this.state.activeCity);
-
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -117,11 +117,10 @@ class App extends React.Component<Props, State>{
           <WeatherPanel loaded={this.state.loaded} weatherData={activeData}></WeatherPanel>
         </main>
         <footer className='App-footer'>
-  
         </footer>
       </div>
-    );
+      );
+    }
   }
-  }
-
-export default App;
+  
+  export default App;

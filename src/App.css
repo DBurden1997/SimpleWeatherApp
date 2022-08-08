@@ -107,6 +107,9 @@ html * {
 .weather-card .card-content-info-temp {
   font-family: temperature, sans-serif;
 }
+.weather-card .card-title {
+  font-size: calc(8px + 2vmin);
+}
 .weather-card .card-content {
   display: flex;
   flex-direction: column;
@@ -118,14 +121,16 @@ html * {
   margin-top: 16px;
 }
 .weather-card.large {
-  font-size: calc(12px + 3vmin);
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
+.weather-card.large .card-title {
+  font-size: calc(12px + 3vmin);
+}
 .weather-card.large .card-content {
   flex-direction: row;
-  margin-top: 32px;
-  margin-bottom: 24px;
+  margin-top: 2vh;
+  margin-bottom: 1vh;
 }
 .weather-card.large .card-content-info {
   display: flex;
@@ -143,7 +148,7 @@ html * {
 .card-content-info-temp {
   font-weight: 700;
 }
-@media only screen and (max-width: 860px) {
+@media only screen and (max-width: 800px) {
   .current-weather-section {
     flex: 0;
   }
@@ -154,13 +159,30 @@ html * {
     flex-direction: row;
     padding: 6px;
   }
+  .upcoming-weather-section .card-title {
+    flex: 1;
+    width: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 16px;
+  }
   .upcoming-weather-section .card-content {
+    flex: 1;
+    text-align: left;
     flex-direction: row-reverse;
     justify-content: center;
     align-items: center;
     margin: 0;
+    margin-right: 16px;
   }
   .upcoming-weather-section .card-content-info {
     margin: 0 32px;
+  }
+  .upcoming-weather-section .weather-card:first-child {
+    border-bottom-left-radius: 0;
+  }
+  .upcoming-weather-section .weather-card:last-child {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
   }
 }
